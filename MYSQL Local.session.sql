@@ -59,4 +59,15 @@ Create TABLE IF NOT EXISTS Reservations(
 
 select * from Reservations;
 
+CREATE table IF NOT EXISTS  Payments (
+    PaymentID int auto_increment primary key,
+    ReservationID int not null,
+    PaymentDate date not null,
+    Amount decimal(10,2) not null,
+    PaymentMethod Enum('creditcard', 'cash', 'online', 'Debitcard') not null,
+    foreign key(ReservationID) references Reservations(ReservationID) on delete cascade
+)
+
+select * from Payments;
+
 
